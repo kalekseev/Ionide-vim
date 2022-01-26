@@ -135,7 +135,7 @@ function! s:fsdn(signature, cont)
     return s:call('fsharp/fsdn', s:FsdnRequest(a:signature), a:cont)
 endfunction
 function! s:f1Help(filePath, line, character, cont)
-    return s:call('fsharp/f1Help', s:TextDocumentPositionParams(a:filePath, a:line, a:character), a:cont)
+    return s:call('fsharp/f1Help', s:TextDocumentPositionParams(a:filePath, a:line, a:character))
 endfunction
 function! fsharp#documentation(filePath, line, character, cont)
     return s:call('fsharp/documentation', s:TextDocumentPositionParams(a:filePath, a:line, a:character), a:cont)
@@ -474,7 +474,7 @@ function! fsharp#OnCursorMove()
 endfunction
 
 function! fsharp#showF1Help()
-    let result = s:f1Help(expand('%:p'), line('.') - 1, col('.') - 1)
+    let result = s:f1Help(expand('%:p'), line('.') - 1, col('.') - 1, v:null)
     echo result
 endfunction
 
